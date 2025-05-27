@@ -81,11 +81,28 @@ Tailwind CSS est un framework CSS utilitaire qui permet de construire rapidement
 
 ## Structure des composants
 
-L'application est divisée en plusieurs composants React :
+L'application est divisée en plusieurs composants React pour une meilleure organisation et maintenabilité du code :
 
-1. **Header** : Affiche le titre et les logos.
-2. **Content** : Contient le compteur de clics et les instructions.
-3. **Footer** : Affiche les informations de pied de page.
+1. **Header** : 
+   - Affiche le titre principal de l'application et les logos
+   - Gère l'animation d'entrée avec des effets de transition
+   - Contient les liens vers les ressources externes (documentation TypeScript et React)
+   - Fichier : `src/components/Header.tsx`
+
+2. **Content** : 
+   - Contient le compteur de clics interactif avec animation au clic
+   - Affiche les instructions pour modifier l'application
+   - Gère son propre état local avec le hook useState
+   - Implémente des animations et transitions pour améliorer l'expérience utilisateur
+   - Fichier : `src/components/Content.tsx`
+
+3. **Footer** : 
+   - Affiche les informations de pied de page et les crédits
+   - Contient des liens vers les ressources et documentation
+   - Utilise des classes Tailwind pour le styling et la mise en page responsive
+   - Fichier : `src/components/Footer.tsx`
+
+Les composants sont assemblés dans le composant principal `App.tsx` qui définit la structure globale de l'application. Cette architecture modulaire facilite la maintenance et permet une séparation claire des responsabilités.
 
 ## Dépannage
 
