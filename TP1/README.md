@@ -104,6 +104,19 @@ L'application est divisée en plusieurs composants React pour une meilleure orga
 
 Les composants sont assemblés dans le composant principal `App.tsx` qui définit la structure globale de l'application. Cette architecture modulaire facilite la maintenance et permet une séparation claire des responsabilités.
 
+## Linting et qualité du code
+
+Le projet utilise ESLint pour assurer la qualité et la cohérence du code. Pour exécuter ESLint sur les fichiers TypeScript React :
+
+```
+cd client
+yarn run eslint src/*.tsx
+```
+
+Cette commande vérifie que le code respecte les règles de style et les bonnes pratiques définies dans la configuration ESLint du projet. La configuration se trouve dans le fichier `eslint.config.js`.
+
+Le projet utilise la configuration ESLint recommandée pour React avec des règles spécifiques pour les hooks React et le rafraîchissement des composants.
+
 ## Dépannage
 
 Si vous rencontrez des erreurs TypeScript lors de la compilation, vous pouvez essayer :
