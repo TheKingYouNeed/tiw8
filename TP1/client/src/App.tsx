@@ -5,8 +5,8 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
+    <div className="container">
+      <div className="logo-container">
         <a href="https://fr.wikipedia.org/wiki/TypeScript" target="_blank">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg"
@@ -25,14 +25,17 @@ function App() {
         </a>
       </div>
         
-      <h1>TP1 - Dahmani Mohammed</h1>
+      <h1 className="title">TP1 - Dahmani Mohammed</h1>
         
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button 
+          onClick={() => setCount((count) => count + 1)}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
           Nombre de clics : {count}
         </button>
-        <p>
-          Modifiez <code>src/App.tsx</code> puis enregistrez pour voir les changements en temps réel (HMR).
+        <p className="mt-4 text-gray-300">
+          Modifiez <code className="bg-gray-800 px-2 py-1 rounded text-white">src/App.tsx</code> puis enregistrez pour voir les changements en temps réel (HMR).
         </p>
       </div>
         
@@ -43,21 +46,15 @@ function App() {
       <div className="project-info">
         <h2>À propos du projet</h2>
         <p>
-          Ce projet a été développé dans le cadre du module TIW8. Il illustre l'utilisation d’un front-end React avec un back-end Node/Express, en TypeScript.
+          Ce projet a été développé dans le cadre du module TIW8. Il illustre l'utilisation d'un front-end React avec un back-end Node/Express, en TypeScript.
         </p>
-        <ul>
+        <ul className="feature-list">
           <li>⚡ Utilise Vite pour un développement ultra-rapide</li>
           <li>⚛️ React pour une interface réactive</li>
           <li>🧑‍💻 Auteur : Dahmani Mohammed</li>
         </ul>
-        <img
-          src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*_Z_7FeXzTljBN4m5fOljZg.png"
-          alt="Aperçu d'une application React"
-          style={{ width: '100%', borderRadius: '10px', marginTop: '1rem' }}
-        />
       </div>
-
-    </>
+    </div>
   )
 }
 
