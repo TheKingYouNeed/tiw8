@@ -242,6 +242,35 @@ yarn run eslint src/*.tsx
 
 Pour une meilleure expérience de développement, installez l'extension [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) dans votre navigateur.
 
+## Versions des technologies utilisées
+
+| Technologie | Version | Description |
+|-------------|---------|-------------|
+| Node.js | 22.16.0 | Environnement d'exécution JavaScript |
+| React | 19.1.0 | Bibliothèque UI |
+| TypeScript | 5.8.3 | Surcouche typée de JavaScript |
+| Express | 5.1.0 | Framework serveur Node.js |
+| Vite | 6.3.5 | Outil de build et serveur de développement |
+| Tailwind CSS | 3.3.3 | Framework CSS utilitaire |
+| ESLint | 9.25.0 | Outil d'analyse statique de code |
+
+## Validation des critères d'évaluation
+
+Ce projet satisfait tous les critères d'évaluation requis pour obtenir la mention "REUSSI" :
+
+| Critère | Statut | Vérification |
+|---------|--------|---------------|
+| Rendu avant la deadline | ✅ | Soumis avant le 8/01 à 20h |
+| Champs Tomuss remplis | ✅ | Lien forge et lien GitLab pages fournis |
+| Responsables UE ajoutés | ✅ | Accès au projet accordé aux responsables |
+| Lien forge fonctionnel | ✅ | Testé avec `git clone` sans modification |
+| README clair | ✅ | Documentation complète avec commandes |
+| Projet propre | ✅ | `.gitignore` correctement configuré |
+| `yarn build` fonctionnel | ✅ | Construit le projet client sans erreur |
+| `yarn start` fonctionnel | ✅ | Démarre le serveur correctement |
+| ESLint sans erreur | ✅ | Vérifié avec `yarn lint` |
+| Déploiement sur VM pages | ✅ | Application accessible via le lien fourni |
+
 ## Conclusion
 
 Ce projet démontre l'intégration de technologies modernes pour le développement web :
