@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Amélioration du contraste et de la lisibilité */
+body {
+  background-color: #f0f2f5;
+  color: #1a1a1a;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header avec meilleur contraste */
+.app-header {
+  background-color: #1a2433; /* Fond plus sombre pour un meilleur contraste */
+  color: #ffffff; /* Blanc pur pour un contraste maximal */
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+}
+
+/* Style amélioré pour les titres dans l'en-tête */
+.app-header h1 {
+  font-weight: 700; /* Extra bold */
+  font-size: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Ombre de texte pour améliorer la lisibilité */
+  letter-spacing: 0.5px; /* Espacement des lettres pour une meilleure lisibilité */
+}
+
+/* Cartes d'événements avec ombre et meilleur contraste */
+.event-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #3498db;
+  color: #333333; /* Couleur de texte foncée pour assurer la lisibilité sur fond blanc */
+}
+
+/* Titres dans les cartes d'événements avec contraste amélioré */
+.event-card h1, .event-card h2, .event-card h3 {
+  color: #1a365d; /* Bleu foncé pour un contraste élevé sur fond blanc */
+  font-weight: 700;
+  text-shadow: none; /* Pas d'ombre sur fond blanc */
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+/* Assurer que les liens dans les cartes sont visibles */
+.event-card a, .question-item a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+.event-card a:hover, .question-item a:hover {
+  text-decoration: underline;
+  color: #3498db;
+}
+
+/* Questions avec meilleur contraste */
+.question-item {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 3px solid #e74c3c;
+  color: #333333; /* Couleur de texte foncée pour assurer la lisibilité sur fond blanc */
+}
+
+/* Titres dans les éléments de question avec contraste amélioré */
+.question-item h1, .question-item h2, .question-item h3, .question-item h4 {
+  color: #742a2a; /* Rouge foncé pour un contraste élevé sur fond blanc */
+  font-weight: 700;
+  text-shadow: none;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+/* Boutons avec meilleur contraste */
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+.btn-secondary {
+  background-color: #2c3e50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #1a252f;
+}
+
+/* Formulaires avec meilleur contraste */
+input, textarea, select {
+  border: 1px solid #cbd5e0;
+  background-color: white;
+  color: #333333;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #111827;
+  color: white;
+}
+
+/* Amélioration du contraste des titres dans toute l'application */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.75rem;
+}
+
+/* Titres principaux avec contraste amélioré */
+main h1 {
+  font-size: 2rem;
+  color: #f8fafc; /* Blanc légèrement grisé pour réduire l'éblouissement sur fond sombre */
+  border-bottom: 2px solid #4b5563;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+main h2 {
+  font-size: 1.5rem;
+  color: #e2e8f0;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+main h3 {
+  font-size: 1.25rem;
+  color: #cbd5e0;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Titres sur fond sombre */
+
+.bg-gray-800 h4 {
+  color: #000000;
+}
+
+/* Titres sur fond clair */
+.bg-white h1, .bg-gray-100 h1, .bg-white h2, .bg-gray-100 h2,
+.bg-white h3, .bg-gray-100 h3, .bg-white h4, .bg-gray-100 h4 {
+  color: #111827;
+  text-shadow: none;
+}
+
+/* Règle générale pour assurer la lisibilité sur les éléments à fond blanc */
+[class*="card"], [class*="item"], [class*="panel"], .bg-white {
+  color: #333333;
+}
+
+/* Custom component styles */
+.logo {
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em rgba(100, 108, 255, 0.67));
+}
+
+.logo.react {
+  animation: spin 20s linear infinite;
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em rgba(97, 218, 251, 0.67));
+}
+
+.card {
+  padding: 2rem;
+  text-align: center;
+}
+
+.read-the-docs {
+  color: #9ca3af;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Additional animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}

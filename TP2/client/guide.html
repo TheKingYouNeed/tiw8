@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide des fonctionnalités - Application Q&R</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1d4ed8;
+            margin-top: 30px;
+            border-left: 4px solid #1d4ed8;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #3b82f6;
+            margin-top: 20px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .feature-section {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .feature-section:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .note {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .tip {
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guide des fonctionnalités - Application Q&R</h1>
+    
+    <p>Ce guide vous explique comment tester les différentes fonctionnalités de l'application de questions-réponses développée pour le TP2 du module TIW8.</p>
+
+    <div class="note">
+        <strong>Note importante :</strong> Assurez-vous que le serveur et le client sont en cours d'exécution avant de tester les fonctionnalités.
+    </div>
+
+    <div class="feature-section">
+        <h2>Architecture SPA (Single-Page Application)</h2>
+        
+        <h3>1. Application React avec TypeScript</h3>
+        <ol>
+            <li>Naviguez entre les différentes vues sans rechargement de page</li>
+            <li>Observez la mise à jour fluide de l'URL dans la barre d'adresse</li>
+        </ol>
+
+        <h3>2. Composants UI modulaires</h3>
+        <ol>
+            <li>Examinez la structure des composants dans le dossier <code>client/src/components/</code></li>
+            <li>Notez comment chaque composant (toolbar, event panel, question cards) est réutilisable</li>
+        </ol>
+
+        <h3>3. Structure statique avec données dynamiques</h3>
+        <ol>
+            <li>Créez un nouvel événement et observez comment l'interface se met à jour sans rechargement</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Gestion des événements</h2>
+        
+        <h3>1. Affichage de la liste des événements</h3>
+        <ol>
+            <li>Accédez à <code>http://localhost:5173/events</code> pour voir la liste des événements</li>
+        </ol>
+
+        <h3>2. Sélection d'un événement</h3>
+        <ol>
+            <li>Cliquez sur un événement dans la liste pour voir ses questions</li>
+            <li>Notez comment l'URL change pour refléter l'événement sélectionné (<code>/event/:eventId</code>)</li>
+        </ol>
+
+        <h3>3. Ajout de nouveaux événements</h3>
+        <ol>
+            <li>Cliquez sur "Créer un nouvel événement"</li>
+            <li>Remplissez le formulaire et soumettez-le</li>
+            <li>Vérifiez que le nouvel événement apparaît dans la liste</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Gestion des questions</h2>
+        
+        <h3>1. Affichage des questions</h3>
+        <ol>
+            <li>Sélectionnez un événement pour voir ses questions</li>
+            <li>Observez les propriétés de chaque question (couleur, contenu, auteur, etc.)</li>
+        </ol>
+
+        <h3>2. Création de questions</h3>
+        <ol>
+            <li>Dans la vue d'un événement, cliquez sur "Ajouter une nouvelle question"</li>
+            <li>Remplissez le formulaire et soumettez-le</li>
+            <li>Vérifiez que la nouvelle question apparaît dans la liste</li>
+        </ol>
+
+        <h3>3. Vote sur les questions</h3>
+        <ol>
+            <li>Cliquez sur les boutons de vote (↑/↓) sur une question</li>
+            <li>Observez le changement du nombre de votes</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Flux de données inversé</h2>
+        
+        <h3>1. Notification des composants parents</h3>
+        <ol>
+            <li>Sélectionnez un événement et observez comment tous les composants enfants sont mis à jour</li>
+            <li>Votez sur une question et observez la mise à jour de l'état global</li>
+        </ol>
+
+        <h3>2. État global</h3>
+        <ol>
+            <li>Ouvrez les outils de développement Redux (extension navigateur)</li>
+            <li>Observez l'état <code>currentEvent</code> et <code>currentQuestion</code> se mettre à jour lors de vos interactions</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Routage basé sur les URL</h2>
+        
+        <h3>1. Mode administrateur</h3>
+        <ol>
+            <li>Accédez à <code>http://localhost:5173/admin/event/:eventId</code></li>
+            <li>Vérifiez que vous avez accès à toutes les fonctionnalités d'édition</li>
+        </ol>
+
+        <h3>2. Mode participant</h3>
+        <ol>
+            <li>Accédez à <code>http://localhost:5173/participant/event/:eventId</code></li>
+            <li>Vérifiez que certaines fonctionnalités d'édition sont désactivées</li>
+        </ol>
+
+        <h3>3. Accès direct à une question</h3>
+        <ol>
+            <li>Accédez à <code>http://localhost:5173/event/:eventId/question/:questionId</code></li>
+            <li>Vérifiez que la question spécifique est affichée</li>
+        </ol>
+
+        <h3>4. Navigation entre questions</h3>
+        <ol>
+            <li>Utilisez les flèches "‹" et "›" pour naviguer entre les questions</li>
+            <li>Observez le changement d'URL et la mise à jour de l'interface</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>État global avec Redux Toolkit</h2>
+        
+        <h3>1. Store Redux</h3>
+        <ol>
+            <li>Ouvrez les outils de développement Redux</li>
+            <li>Examinez la structure du store et les différents états</li>
+        </ol>
+
+        <h3>2. Actions typées</h3>
+        <ol>
+            <li>Effectuez différentes actions (sélection d'événement, vote, etc.)</li>
+            <li>Observez les actions dispatched dans les outils Redux</li>
+        </ol>
+
+        <h3>3. Hooks React-Redux</h3>
+        <ol>
+            <li>Examinez le code source pour voir l'utilisation de <code>useSelector</code> et <code>useDispatch</code></li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Middleware</h2>
+        
+        <h3>1. Logger</h3>
+        <ol>
+            <li>Ouvrez la console du navigateur</li>
+            <li>Effectuez différentes actions et observez les logs détaillés (état précédent, action, état suivant)</li>
+        </ol>
+
+        <h3>2. Propagateur WebSocket</h3>
+        <ol>
+            <li>Ouvrez l'application dans deux onglets ou navigateurs différents</li>
+            <li>Effectuez une action dans un onglet et observez la synchronisation dans l'autre</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Synchronisation multi-dispositifs en temps réel</h2>
+        
+        <h3>1. Diffusion des actions</h3>
+        <ol>
+            <li>Ouvrez l'application sur plusieurs appareils connectés au même réseau</li>
+            <li>Effectuez des modifications sur un appareil et observez la mise à jour en temps réel sur les autres</li>
+        </ol>
+
+        <h3>2. Mise à jour instantanée</h3>
+        <ol>
+            <li>Créez une question sur un appareil</li>
+            <li>Vérifiez qu'elle apparaît immédiatement sur les autres appareils</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Design adaptatif</h2>
+        
+        <h3>1. Mise en page adaptative</h3>
+        <ol>
+            <li>Redimensionnez la fenêtre du navigateur ou utilisez les outils de développement pour simuler différents appareils</li>
+            <li>Observez comment l'interface s'adapte aux différentes tailles d'écran</li>
+        </ol>
+
+        <h3>2. Mode plein écran</h3>
+        <ol>
+            <li>Cliquez sur le bouton de plein écran dans l'interface</li>
+            <li>Vérifiez que l'application s'affiche correctement en plein écran</li>
+        </ol>
+    </div>
+
+    <div class="feature-section">
+        <h2>Canvas et reconnaissance de gestes</h2>
+        
+        <h3>1. Dessin à main levée</h3>
+        <ol>
+            <li>Dans la vue d'un événement, utilisez le canvas pour dessiner</li>
+            <li>Essayez de dessiner les gestes "‹" et "›"</li>
+        </ol>
+
+        <h3>2. Reconnaissance de gestes</h3>
+        <ol>
+            <li>Dessinez le geste "‹" pour naviguer vers la question précédente</li>
+            <li>Dessinez le geste "›" pour naviguer vers la question suivante</li>
+            <li>Vérifiez que la navigation fonctionne correctement après la reconnaissance du geste</li>
+        </ol>
+        
+        <div class="tip">
+            <strong>Astuce :</strong> Pour de meilleurs résultats, dessinez les gestes d'un seul trait continu et essayez de les faire ressembler autant que possible aux symboles "‹" et "›".
+        </div>
+    </div>
+
+    <footer>
+        <p>Application Q&R - TP2 TIW8 - Dahmani Mohammed</p>
+    </footer>
+</body>
+</html>
