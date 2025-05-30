@@ -77,14 +77,14 @@ const EventPanel = ({ isAdmin = false }: EventPanelProps) => {
     const newPath = `${baseRoute}/question/${nextQuestion.id}`;
     console.log(`Navigating to: ${newPath}`);
     
-    // FIXED: Use window.location.href instead of navigate to force a full page reload
-    // This ensures we completely reset the navigation state
-    window.location.href = newPath;
-    console.log('Navigation initiated with full page reload');
+    // Use React Router's navigate for smoother transitions without page reload
+    navigate(newPath);
+    console.log('Navigation initiated with React Router');
   };
 
+  // Using questionId as key to force re-rendering when question changes
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center" key={`event-panel-${eventId}-${questionId}`}>
       <div className="w-full max-w-lg flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">{event.title}</h2>
         {isAdmin && (

@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setCurrentQuestion } from '../store/slices/eventsSlice';
 import type { Question } from '../models';
 import OneDollar from '../OneDollar';
@@ -12,6 +13,7 @@ interface Props {
 
 const QuestionCanvas = ({ eventId, questions, currentQuestionId }: Props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [paint, setPaint] = useState(false);
   const [gesture, setGesture] = useState(false);
@@ -182,7 +184,6 @@ const QuestionCanvas = ({ eventId, questions, currentQuestionId }: Props) => {
       console.log(`Navigating to question: ${nextQuestion.id}`);
       
       try {
-        // CRITICAL FIX: Use the exact same navigation logic as the blue buttons
         // First dispatch the action to update Redux state
         dispatch(setCurrentQuestion(nextQuestion.id));
         console.log('Dispatched setCurrentQuestion action');
@@ -190,16 +191,16 @@ const QuestionCanvas = ({ eventId, questions, currentQuestionId }: Props) => {
         // Get the current URL path to determine if we're in admin mode
         const isAdmin = window.location.pathname.includes('/admin/');
         
-        // CRITICAL FIX: Construct the path exactly as it appears in the URL bar
+        // Construct the path exactly as it appears in the URL bar
         // This ensures we maintain the same route structure
         const baseRoute = isAdmin ? `/admin/event/${eventId}` : `/event/${eventId}`;
         const newPath = `${baseRoute}/question/${nextQuestion.id}`;
         console.log(`Navigating to: ${newPath}`);
         
-        // FIXED: Use window.location.href instead of navigate to force a full page reload
-        // This ensures we completely reset the navigation state
-        window.location.href = newPath;
-        console.log('Navigation initiated with full page reload');
+        // Use React Router's navigate instead of window.location.href
+        // This prevents a full page reload and maintains the SPA experience
+        navigate(newPath);
+        console.log('Navigation initiated with React Router');
       } catch (error) {
         console.error('Error during navigation:', error);
       }
@@ -392,14 +393,16 @@ const QuestionCanvas = ({ eventId, questions, currentQuestionId }: Props) => {
   const questionInfo = getCurrentQuestionInfo();
   
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      width: '100%',
-      marginTop: '10px',
-      marginBottom: '10px'
-    }}>
+    <div 
+      key={`question-canvas-${eventId}-${currentQuestionId}`}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        marginTop: '10px',
+        marginBottom: '10px'
+      }}>
       <div style={{
         width: '95%',
         maxWidth: '450px',
