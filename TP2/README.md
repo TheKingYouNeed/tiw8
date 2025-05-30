@@ -1,4 +1,4 @@
-# TP2 - Application Q&R Multi-Surface avec React et Node.js
+# TP2 - Application Q&R Multi-Surface avec React et TypeScript
 
 ## Objectif
 
@@ -158,6 +158,88 @@ Ce script affichera l'adresse IP de votre machine et les URLs pour accéder à l
 - Node.js avec Express
 - Socket.IO pour la communication bidirectionnelle
 - TypeScript pour la sécurité du typage
+
+## Documentation technique
+
+### Structure des URLs et endpoints
+
+#### URLs client (Frontend)
+
+| URL | Description | Composant principal |
+|-----|-------------|--------------------|
+| `/` | Page d'accueil, redirection vers `/events` | `App` |
+| `/events` | Liste des événements disponibles | `EventsList` |
+| `/event/:eventId` | Détails d'un événement et liste des questions | `EventPanel`, `QuestionList` |
+| `/event/:eventId/question/:questionId` | Détails d'une question spécifique | `EventPanel` |
+| `/admin/event/:eventId` | Mode administrateur pour un événement | `EventPanel`, `AdminQuestionList` |
+| `/admin/event/:eventId/question/:questionId` | Mode administrateur pour une question | `EventPanel` |
+
+#### Endpoints API (Backend)
+
+| Endpoint | Méthode | Description | Paramètres |
+|----------|---------|-------------|------------|
+| `/api/events` | GET | Récupère la liste des événements | - |
+| `/api/events` | POST | Crée un nouvel événement | `title`, `description` |
+| `/api/events/:eventId` | GET | Récupère les détails d'un événement | - |
+| `/api/events/:eventId/questions` | GET | Récupère les questions d'un événement | - |
+| `/api/events/:eventId/questions` | POST | Ajoute une question à un événement | `text`, `content`, `author` |
+| `/api/events/:eventId/questions/:questionId` | DELETE | Supprime une question | - |
+| `/api/events/:eventId/questions/:questionId/upvote` | POST | Vote pour une question | - |
+
+#### Événements Socket.IO
+
+| Événement | Description | Données |
+|------------|-------------|--------|
+| `connect` | Connexion au serveur Socket.IO | - |
+| `event:created` | Un nouvel événement a été créé | `event` |
+| `question:created` | Une nouvelle question a été créée | `eventId`, `question` |
+| `question:deleted` | Une question a été supprimée | `eventId`, `questionId` |
+| `question:upvoted` | Une question a reçu un vote | `eventId`, `questionId` |
+
+### Architecture et réutilisation des composants
+
+L'application est conçue selon une architecture modulaire qui favorise la réutilisation des composants. Voici comment les composants sont réutilisés dans différents contextes :
+
+#### Composants réutilisables
+
+1. **EventPanel** : Utilisé à la fois en mode utilisateur et en mode administrateur. Le comportement change en fonction du prop `isAdmin`.
+
+2. **QuestionList / AdminQuestionList** : Les deux composants partagent une logique similaire mais avec des fonctionnalités différentes selon le niveau d'accès.
+
+3. **QuestionCanvas** : Composant réutilisable pour la reconnaissance de gestes sur mobile, intégré conditionnellement dans l'interface.
+
+4. **AddQuestionForm** : Utilisé dans plusieurs contextes pour ajouter des questions aux événements.
+
+#### Partage d'état avec Redux
+
+L'application utilise Redux pour partager l'état entre les composants, ce qui permet :
+
+- Une synchronisation efficace entre les différentes vues
+- Une gestion centralisée des données
+- Une séparation claire entre la logique métier et l'interface utilisateur
+
+#### Mécanisme de rechargement complet
+
+Lors de la navigation entre les questions via les gestes de swipe ou les boutons, l'application force un rechargement complet de la page (`window.location.href`) plutôt qu'une navigation React Router standard. Cela permet de :
+
+- Réinitialiser complètement l'état de navigation
+- Éviter les problèmes potentiels avec l'état persistant
+- Garantir une expérience utilisateur cohérente entre les différentes méthodes de navigation
+
+### Diagramme de flux
+
+```
+Client <---> Socket.IO <---> Serveur
+   |
+   v
+Redux Store
+   |
+   v
+Composants React
+   |
+   v
+Interface Utilisateur
+```
 
 ## Résolution des problèmes courants
 
