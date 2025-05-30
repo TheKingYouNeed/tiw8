@@ -55,9 +55,9 @@ const AppContent = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100">
+    <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center">
       <AppToolbar />
-      <main className="container mx-auto py-6 px-4">
+      <main className="max-w-4xl w-full py-6 px-4">
         <Routes>
           <Route path="/" element={<Navigate to="/events" replace />} />
           <Route path="/events" element={<EventsList />} />
@@ -71,8 +71,8 @@ const AppContent = () => {
           <Route path="/admin/event/:eventId/question/:questionId" element={<EventPanel isAdmin={true} />} />
         </Routes>
       </main>
-      <footer className="bg-gray-800 text-white py-4 mt-8">
-        <div className="container mx-auto text-center">
+      <footer className="bg-gray-800 text-white py-4 mt-8 w-full">
+        <div className="max-w-4xl mx-auto text-center px-4">
           <p>TIW8 - TP2 Q&A Application</p>
           {isMobile && (
             <button 

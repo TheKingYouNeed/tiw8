@@ -26,7 +26,7 @@ const QuestionList = ({ eventId }: Props) => {
   };
 
   return (
-    <div>
+    <div className="w-full max-w-lg mx-auto">
       <AddQuestionForm eventId={eventId} />
       
       <h3 className="text-xl font-semibold mb-4">Questions</h3>

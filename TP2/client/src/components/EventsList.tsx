@@ -7,10 +7,10 @@ const EventsList = () => {
   const events = useSelector((state: RootState) => state.events.events);
 
   return (
-    <div className="app-container">
+    <div className="w-full">
       <h1 className="text-3xl font-bold mb-6 text-center text-white">Événements Q&A</h1>
       
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-lg mx-auto w-full">
         <AddEventForm />
         
         <h2 className="text-xl font-semibold mb-4 text-white">Événements disponibles</h2>

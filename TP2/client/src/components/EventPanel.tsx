@@ -84,8 +84,8 @@ const EventPanel = ({ isAdmin = false }: EventPanelProps) => {
   };
 
   return (
-    <div className="p-4">
-      <div className="flex justify-between items-center mb-4">
+    <div className="w-full flex flex-col items-center">
+      <div className="w-full max-w-lg flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">{event.title}</h2>
         {isAdmin && (
           <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
@@ -95,7 +95,7 @@ const EventPanel = ({ isAdmin = false }: EventPanelProps) => {
       </div>
       
       {questionId ? (
-        <div className="mb-4">
+        <div className="mb-4 w-full max-w-lg">
           <div className="flex justify-between items-center mb-4">
             <button 
               onClick={() => navigateQuestion('prev')}
@@ -152,29 +152,7 @@ const EventPanel = ({ isAdmin = false }: EventPanelProps) => {
                   </div>
                   <span className="text-gray-600">Par: {currentQuestionObj.author}</span>
                 </div>
-                {isAdmin && (
-                  <div className="mt-4 pt-4 border-t border-gray-200">
-                    <h5 className="font-medium mb-2">Options d'administration</h5>
-                    <div className="flex space-x-2">
-                      <button 
-                        className="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
-                        onClick={() => {
-                          alert('Fonctionnalité de modification disponible uniquement en mode administrateur');
-                        }}
-                      >
-                        Modifier
-                      </button>
-                      <button 
-                        className="bg-purple-500 text-white px-3 py-1 rounded text-sm hover:bg-purple-600"
-                        onClick={() => {
-                          alert('Fonctionnalité de mise en avant disponible uniquement en mode administrateur');
-                        }}
-                      >
-                        Mettre en avant
-                      </button>
-                    </div>
-                  </div>
-                )}
+
               </>
             ) : (
               <p>Question non trouvée</p>
@@ -182,7 +160,7 @@ const EventPanel = ({ isAdmin = false }: EventPanelProps) => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="w-full max-w-lg">
           {isAdmin ? (
             <AdminQuestionList eventId={eventId!} />
           ) : (
@@ -193,7 +171,7 @@ const EventPanel = ({ isAdmin = false }: EventPanelProps) => {
       
       {/* Only show gesture navigation on question detail pages and on mobile */}
       {isMobile && questionId && event.questions.length > 1 && (
-        <div className="mt-4 border-t pt-4">
+        <div className="mt-4 border-t pt-4 w-full max-w-lg">
           <QuestionCanvas 
             eventId={eventId!} 
             questions={event.questions} 

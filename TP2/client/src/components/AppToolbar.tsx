@@ -17,8 +17,8 @@ const AppToolbar: React.FC = () => {
   };
 
   return (
-    <nav className="app-header">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="app-header w-full">
+      <div className="max-w-4xl mx-auto flex justify-between items-center px-4">
         <h1 className="text-xl font-bold">Application Q&R</h1>
         <select
           className="bg-gray-700 text-white px-4 py-2 rounded"
