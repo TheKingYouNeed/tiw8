@@ -114,8 +114,6 @@ Ce script affichera l'adresse IP de votre machine et les URLs pour accéder à l
 
 #### Fonctionnalités administrateur
 - Suppression de questions
-- Options pour modifier ou mettre en avant des questions
-
 #### Comment tester :
 - Modifiez l'URL pour inclure `/admin/` avant `/event/:eventId`
 - Vérifiez que le badge "Mode Administrateur" est affiché
