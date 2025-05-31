@@ -107,8 +107,10 @@ Ce script affichera l'adresse IP de votre machine et les URLs pour accéder à l
 ### 4. Mode administrateur
 
 #### Accès au mode administrateur
-- Accédez au mode administrateur via l'URL `/admin/event/:eventId`
-- Le mode administrateur est indiqué par un badge bleu "Mode Administrateur"
+- Aucun bouton n’est visible dans l’interface : pour des raisons de sécurité, seul l’administrateur connaît ce chemin caché.  
+- Pour y accéder, saisissez directement l’URL : `/admin/event/:eventId`
+- Une fois connecté, un badge bleu « Mode Administrateur » confirme que vous êtes bien en mode admin
+
 
 #### Fonctionnalités administrateur
 - Suppression de questions
