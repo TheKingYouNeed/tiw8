@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "ws": "^8.18.2",
+    "http-server": "^14.1.1"
+  },
+  "scripts": {
+    "start-server": "node node-server/server.js",
+    "start-http": "http-server -c-1 . -p 8000"
+  }
+}
