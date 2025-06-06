@@ -59,15 +59,37 @@ http-server -c-1 . -p 8000
 
 ## Utilisation
 
-### Pour tester un même appareil
-1. Ouvrez deux fenêtres de navigateur à l'adresse http://localhost:8000
-2. Chaque fenêtre affichera un code unique.
-3. Dans une fenêtre, saisissez le code de l'autre fenêtre et cliquez sur « Se connecter ».
-4. Une fois connecté, sélectionnez les fichiers à transférer et cliquez sur « Démarrer l'envoi ».
+### Lancer le projet (comment démarrer)
 
-### Pour tester différents appareils sur le même réseau
-1. Trouvez l'adresse IP de l'ordinateur qui exécute les serveurs.
-2. Sur les autres appareils, accédez à http://[VOTRE_ADRESSE_IP]:8000
-3. Si la connexion ne fonctionne pas automatiquement, modifiez js/client.js :
-- Trouvez cette ligne : `var connection = new WebSocket('ws://' + ip + ':8888');`
-- Remplacez par : `var connection = new WebSocket('ws://[VOTRE_ADRESSE_IP]:8888');`
+1. Ouvrez un terminal et placez-vous dans le dossier du projet.
+2. Installez les dépendances principales :
+   ```
+   npm install
+   ```
+3. Rendez-vous dans le dossier node-server et installez les dépendances serveur :
+   ```
+   cd node-server
+   npm install
+   ```
+4. Démarrez le serveur de signalisation WebSocket :
+   ```
+   node server.js
+   ```
+   Le message « Server started... » doit s'afficher.
+5. Ouvrez un nouveau terminal, retournez à la racine du projet et lancez le serveur HTTP :
+   ```
+   http-server -c-1 . -p 8000
+   ```
+   (Si la commande http-server n'est pas reconnue, installez-le avec `npm install -g http-server`)
+6. Ouvrez votre navigateur à l'adresse http://localhost:8000 ou http://[VOTRE_ADRESSE_IP]:8000
+
+### Scénarios d'utilisation
+
+#### Tester sur un même appareil
+1. Ouvrez deux fenêtres de navigateur à l'adresse http://localhost:8000
+
+#### Tester entre plusieurs appareils sur le même réseau
+1. Sur les autres appareils, accédez à http://[VOTRE_ADRESSE_IP]:8000
+2. Si la connexion WebSocket ne fonctionne pas automatiquement, modifiez dans js/client.js :
+   - Remplacez : `var connection = new WebSocket('ws://' + ip + ':8888');`
+   - Par : `var connection = new WebSocket('ws://[VOTRE_ADRESSE_IP]:8888');`
