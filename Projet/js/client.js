@@ -20,13 +20,13 @@ var connection = new WebSocket('ws://' + ip + ':8888');
 
 // Callback appelé quand la connexion WebSocket est établie
 connection.onopen = function () {
-  console.log("🔗 Connected to signaling server");
+  console.log("🔗 Connecté au serveur de signalisation");
   send({ type: "login" });  // Envoie une demande de login au serveur
 };
 
 // Callback pour gérer les messages reçus du serveur
 connection.onmessage = function (message) {
-  console.log("📨 Got message", message.data);
+  console.log("📨 Message reçu", message.data);
   var data = JSON.parse(message.data);  // Parse le message JSON
 
   // Traite le message selon son type
@@ -53,7 +53,7 @@ connection.onmessage = function (message) {
 
 // Callback pour gérer les erreurs de connexion WebSocket
 connection.onerror = function (err) {
-  console.error("⚠ Got error", err);
+  console.error("⚠ Erreur détectée", err);
 };
 
 // Envoi JSON via WebSocket
@@ -70,7 +70,7 @@ function send(message) {
 function onLogin(data) {
   name = data.code;  // Récupère le code unique
   $("#yourCode").text(name);  // Affiche le code dans l'UI
-  console.log("🔑 Logged in as", name);
+  console.log("🔑 Connecté en tant que", name);
   startConnection();  // Initialise la connexion WebRTC
 }
 
@@ -78,11 +78,11 @@ function onLogin(data) {
 function startConnection() {
   // Vérifie la compatibilité WebRTC
   if (!hasRTCPeerConnection()) {
-    alert("Sorry, your browser does not support WebRTC.");
+    alert("Désolé, votre navigateur ne prend pas en charge WebRTC.");
     return;
   }
 
-  console.log("📡 Starting WebRTC peer connection");
+  console.log("📡 Démarrage de la connexion WebRTC entre pairs");
 
   // Configuration des serveurs ICE (STUN/TURN)
   var configuration = {
@@ -97,7 +97,7 @@ function startConnection() {
   // a) Gestion des candidats ICE locaux
   yourConnection.onicecandidate = function (event) {
     if (event.candidate) {
-      console.log("🧊 ICE candidate generated:", event.candidate);
+      console.log("🧊 Candidat ICE généré:", event.candidate);
       send({ type: "candidate", candidate: event.candidate });  // Envoie au pair
     }
   };
@@ -283,11 +283,11 @@ function sendFile(file, fileId) {
         .attr("aria-valuenow", pct)
         .css("width", pct + "%");
       dataChannel.send(arrayBufferToBase64(buffer.slice(start, end)));
-      console.log("📤 Envoi chunk : " + pct + "%");
+      console.log("📤 Envoi du fragment : " + pct + "%");
 
       if (last) {
         dataChannel.send(JSON.stringify({ type: "end" }));
-        console.log("📤 Tous les chunks ont été envoyés (" + file.name + ")");
+        console.log("📤 Tous les fragments ont été envoyés (" + file.name + ")");
         startSending();
         $(".btn-remove-file-" + fileId)
           .removeClass("btn-warning")
@@ -371,8 +371,8 @@ function hasRTCPeerConnection() {
 function hasFileApi() {
   return window.File && window.FileReader && window.FileList && window.Blob;
 }
-// No need to duplicate file handling code here as it's already in main.js
-// The main.js file handles all file selection, listing, and UI updates
+// Pas besoin de dupliquer le code de gestion des fichiers ici car il est déjà dans main.js
+// Le fichier main.js gère toute la sélection de fichiers, le listing et les mises à jour de l'interface
 
-// We'll just leave the sendFile function since it works with the WebRTC dataChannel
-// This way main.js can call it, but the actual file sending happens here with the dataChannel
+// Nous gardons simplement la fonction sendFile car elle fonctionne avec le dataChannel WebRTC
+// De cette façon, main.js peut l'appeler, mais l'envoi réel du fichier se fait ici avec le dataChannel
